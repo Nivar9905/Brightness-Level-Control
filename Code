@@ -1,0 +1,27 @@
+#Brightness level control
+brightness=0
+level=10
+print("LED Brightness Level Control")
+print("Commands: '+' to increase, '-' to decrease, 'exit' to quit.")
+while True:
+    command=input("Enter command: ").strip()
+    if command=='+':
+      if brightness<100:
+        brightness+=level
+        brightness=min(brightness,100)
+        print(f"Brightness increased to {brightness}%")
+      else:
+        print("Brightness is already full")
+    elif command=='-':
+      if brightness>=0:
+        brightness-=level
+        brightness=max(brightness,0)
+        print(f"Brightness decreased to {brightness}%")
+      else:
+        print("Brightness is already low")
+    elif command.lower()=='exit':
+      print("Exiting the program.")
+      break
+    else:
+      print("Invalid command. Please try again by using '+' or '-'.")
+    print("LED:"+"||"*(brightness//5)+" "*((100-brightness)//5)+f"({brightness}%)")      
